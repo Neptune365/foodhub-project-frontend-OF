@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {CreadorService} from "../../services/creador.service";
 import {Observable} from "rxjs";
 import {HttpEventType, HttpResponse} from "@angular/common/http";
+import {data} from "autoprefixer";
+import {CreadorDTO} from "../../models/CreadorDTO";
+import {FotoPerfilDTO} from "../../models/FotoPerfilDTO";
 
 @Component({
   selector: 'app-body-creador-mi-perfil',
@@ -9,6 +12,19 @@ import {HttpEventType, HttpResponse} from "@angular/common/http";
   styleUrls: ['./body-creador-mi-perfil.component.css']
 })
 export class BodyCreadorMiPerfilComponent implements OnInit {
+  creadorDTO: CreadorDTO = {
+    nombre: '',
+    apellidoPaterno: '',
+    apellidoMaterno: '',
+    correoElectronico: '',
+    contrasenia: '',
+    codigoColegiatura: '',
+  };
+
+  fotoPerfilDTO: FotoPerfilDTO = {
+    fotoPerfil: '',
+  }
+
   selectedFiles?: FileList;
   currentFile?: File;
   progress = 0;
@@ -22,6 +38,19 @@ export class BodyCreadorMiPerfilComponent implements OnInit {
 
   ngOnInit(): void {
     this.imageInfos = this.creadorService.getFiles();
+    this.obtenerDatosCreador();
+  }
+
+  obtenerDatosCreador(): void {
+    this.creadorService.obtenerDatosDeCreador().subscribe(
+      (datos: CreadorDTO) => {
+        this.creadorDTO = datos;
+      },
+      error => {
+        console.error('Error al obtener datos del creador:', error);
+        // Manejo de errores
+      }
+    );
   }
 
   selectFile(event: any): void {
@@ -42,6 +71,7 @@ export class BodyCreadorMiPerfilComponent implements OnInit {
         reader.onload = (e: any) => {
           console.log(e.target.result);
           this.preview = e.target.result;
+          this.creadorDTO = e.target.result;
         };
 
         reader.readAsDataURL(this.currentFile);
@@ -85,4 +115,6 @@ export class BodyCreadorMiPerfilComponent implements OnInit {
       this.selectedFiles = undefined;
     }
   }
+
+  protected readonly data = data;
 }

@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import {environments} from "../../environments/environments";
-import {HttpClient, HttpEvent, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {FotoPerfilDTO} from "../models/FotoPerfilDTO";
+import {PerfilCreadorDTO} from "../models/PerfilCreadorDTO";
+import {CreadorDTO} from "../models/CreadorDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -20,19 +23,31 @@ export class CreadorService {
     return this.http.get<any>(`${this.url}/creador/cantidadRecetas`, { headers });
   }
 
-  modificarPerfil(file: File): Observable<HttpEvent<any>> {
+  // POR DESARROLLAR
+  modificarPerfil(fotoPerfil: File): Observable<FotoPerfilDTO> {
+    const token = localStorage.getItem('token');
+    const formData: FormData = new FormData();
+    formData.append('file', fotoPerfil);
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.patch<FotoPerfilDTO>(`${this.url}/creador/perfil`, formData, { headers });
+  }
+  getFiles(): Observable<any> {
+    return this.http.get(`${this.url}/files`);
+  }
+  //
+
+  obtenerDatosDeCreador(): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
 
-    const formData: FormData = new FormData();
-    formData.append('file', file);
-
-    return this.http.patch<any>(`${this.url}/creador/perfil`, { headers });
+    return this.http.get<any>(`${this.url}/creador/datos`, { headers });
   }
 
-  getFiles(): Observable<any> {
-    return this.http.get(`${this.url}/files`);
-  }
 }

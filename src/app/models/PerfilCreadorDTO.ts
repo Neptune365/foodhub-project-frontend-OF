@@ -1,4 +1,4 @@
-export interface CreadorDTO {
+export interface PerfilCreadorDTO {
   nombre: string,
   apellidoPaterno: string,
   apellidoMaterno: string,

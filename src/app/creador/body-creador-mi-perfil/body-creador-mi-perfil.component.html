@@ -24,21 +24,21 @@
             <div class="row">
               <div>
                 <label for="input1">Nombre: </label>
-                <input type="text" id="input1" readonly value="MiNombre">
+                <input type="text" id="input1" readonly [value]="creadorDTO.nombre">
               </div>
               <div style="margin-left: 15px">
                 <label for="input4">Código de Colegiado: </label>
-                <input type="text" id="input4" readonly value="012345">
+                <input type="text" id="input4" readonly [value]="creadorDTO.codigoColegiatura">
               </div>
             </div>
             <div class="row">
               <div>
                 <label for="input2">Apellido Paterno:  </label>
-                <input type="text" id="input2" readonly value="PrimerApellido">
+                <input type="text" id="input2" readonly [value]="creadorDTO.apellidoPaterno">
               </div>
               <div style="margin-left: -45px">
                 <label for="input3">Apellido Materno: </label>
-                <input type="text" id="input3" readonly value="SegundoApellido">
+                <input type="text" id="input3" readonly [value]="creadorDTO.apellidoMaterno">
               </div>
             </div>
 
@@ -50,7 +50,7 @@
             <div class="row">
               <div>
                 <label for="input5">Correo Electrónico:  </label>
-                <input type="text" id="input5" readonly value="abc@example.com">
+                <input type="text" id="input5" readonly [value]="creadorDTO.correoElectronico">
               </div>
               <div style="margin-left: -85px">
                 <label for="input6">Contraseña: </label>
