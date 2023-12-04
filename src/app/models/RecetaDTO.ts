@@ -16,7 +16,7 @@ export interface RecetaDTO {
   tiempoCoccion: number;
   porciones: number;
   calorias: number;
-  // imagen: string;
+  // imagen: File;
   categoria: Categoria;
   ingredientes: IngredienteDTO[];
   instrucciones: InstruccionDTO[];

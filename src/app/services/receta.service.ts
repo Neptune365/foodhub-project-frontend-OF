@@ -3,6 +3,7 @@ import {environments} from "../../environments/environments";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {RecetaDTO} from "../models/RecetaDTO";
+import {RecetaCategoriaDTO} from "../models/RecetaCategoriaDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +19,13 @@ export class RecetaService {
       'Content-Type': `application/json`,
       'Authorization': `Bearer ${token}`
     });
+
     return this.http.post<any>(`${this.url}/explorar/crear`, recetaDTO, { headers });
   }
 
-  mostrarRecetasPorCategoria(){}
+  mostrarRecetasPorCategoria(categoria: string): Observable<RecetaCategoriaDTO[]>{
+    return this.http.get<RecetaCategoriaDTO[]>(`${this.url}/explorar/recetas?categoria=${categoria}`);
+  }
 
   verReceta(){}
 }

@@ -10,10 +10,10 @@
 
       <!-- CARD 1 -->
       <div *ngFor="let recipe of recipes" class="card">
-        <img [src]="recipe.image" alt="Imagen de la tarjeta">
+        <img [src]="recipe.imagenReceta" alt="Imagen de la tarjeta">
         <div class="card-content">
-          <h3>{{ recipe.title }}</h3>
-          <p>{{ recipe.description }}</p>
+          <h3>{{ recipe.titulo }}</h3>
+          <p>{{ recipe.descripcion }}</p>
         </div>
       </div>
 
