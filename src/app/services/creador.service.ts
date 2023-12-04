@@ -13,20 +13,18 @@ export class CreadorService {
   obtenerCantidadRecetasCreadas(){
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
 
-    return this.http.get<number>(`${this.url}/creador/cantidadRecetas`, {headers});
+    return this.http.get<any>(`${this.url}/creador/cantidadRecetas`, { headers });
   }
 
-  // falta el cuerpo mandar
-  modificarPerfil(base64Image: string){
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-
-    return this.http.patch<any>(`${this.url}/creador/perfil`, { fotoPerfil: base64Image }, { headers });
-  }
+  // modificarPerfil(base64Image: string){
+  //   const token = localStorage.getItem('token');
+  //   const headers = new HttpHeaders({
+  //     'Authorization': `Bearer ${token}`
+  //   });
+  //
+  //   return this.http.patch<any>(`${this.url}/creador/perfil`, { fotoPerfil: base64Image }, { headers });
+  // }
 }
