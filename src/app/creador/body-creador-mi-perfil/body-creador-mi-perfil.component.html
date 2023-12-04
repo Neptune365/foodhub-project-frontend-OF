@@ -1,0 +1,66 @@
+<main>
+
+  <div class="card-container">
+    <div class="card">
+
+      <h2>Datos de Mi Perfil</h2>
+
+      <div class="card-content">
+        <div class="column-left">
+          <div class="profile-image-container">
+            <img [src]="profileImage || './assets/images/default-profile-image.jpg'" alt="Foto de perfil" id="profileImage">
+          </div>
+          <p>Creador</p>
+          <button class="change-photo-button" (click)="openFileInput()">Cambiar Foto</button>
+          <input type="file" id="fileInput" (change)="onFileSelected($event)" accept="image/*" style="display: none;">
+        </div>
+
+        <div class="column-right">
+          <h3>Información Personal</h3>
+
+          <div>
+            <div class="row">
+              <div>
+                <label for="input1">Nombre: </label>
+                <input type="text" id="input1" readonly value="MiNombre">
+              </div>
+              <div style="margin-left: 15px">
+                <label for="input4">Código de Colegiado: </label>
+                <input type="text" id="input4" readonly value="012345">
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label for="input2">Apellido Paterno:  </label>
+                <input type="text" id="input2" readonly value="PrimerApellido">
+              </div>
+              <div style="margin-left: -45px">
+                <label for="input3">Apellido Materno: </label>
+                <input type="text" id="input3" readonly value="SegundoApellido">
+              </div>
+            </div>
+
+          </div>
+
+
+          <h3>Información de Cuenta</h3>
+          <div>
+            <div class="row">
+              <div>
+                <label for="input5">Correo Electrónico:  </label>
+                <input type="text" id="input5" readonly value="abc@example.com">
+              </div>
+              <div style="margin-left: -85px">
+                <label for="input6">Contraseña: </label>
+                <input type="text" id="input6" readonly value="********">
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+  </div>
+  </div>
+  </div>
+
+</main>

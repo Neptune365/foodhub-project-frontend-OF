@@ -1,0 +1,36 @@
+<main>
+
+  <div class="container">
+
+    <div class="column-left">
+      <app-sidebar></app-sidebar>
+    </div>
+
+        <div class="column-right">
+
+          <!-- CARD 1 -->
+          <div *ngFor="let recipe of recipes | paginate: { itemsPerPage: 6, currentPage: page }" class="card" routerLink="/cardBody" >
+            <img [src]="recipe.image" alt="Imagen de la tarjeta">
+            <div class="card-content">
+              <h3>{{ recipe.title }}</h3>
+              <p>{{ recipe.description }}</p>
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+
+
+  </div>
+
+  <div class="pagination">
+    <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+  </div>
+
+</main>
+
+
+
