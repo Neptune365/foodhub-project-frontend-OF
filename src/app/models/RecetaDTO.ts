@@ -1,10 +1,12 @@
 import {Categoria} from "./categoria";
 
 export interface IngredienteDTO {
+  // idIngrediente: number;
   ingrediente: string;
 }
 
 export interface InstruccionDTO {
+  // idInstruccion: number;
   instruccion: string;
 }
 
@@ -14,7 +16,7 @@ export interface RecetaDTO {
   tiempoCoccion: number;
   porciones: number;
   calorias: number;
-  imagen: string;
+  // imagen: string;
   categoria: Categoria;
   ingredientes: IngredienteDTO[];
   instrucciones: InstruccionDTO[];

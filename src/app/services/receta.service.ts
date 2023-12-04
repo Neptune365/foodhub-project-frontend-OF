@@ -15,9 +15,10 @@ export class RecetaService {
   crearReceta(recetaDTO: RecetaDTO): Observable<any>{
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
+      'Content-Type': `application/json`,
       'Authorization': `Bearer ${token}`
     });
-    return this.http.post<any>(`${this.url}/explorar/crear`, recetaDTO, {headers});
+    return this.http.post<any>(`${this.url}/explorar/crear`, recetaDTO, { headers });
   }
 
   mostrarRecetasPorCategoria(){}
