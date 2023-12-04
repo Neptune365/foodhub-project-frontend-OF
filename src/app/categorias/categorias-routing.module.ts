@@ -8,8 +8,6 @@ import {CenaComponent} from "./cena/cena.component";
 import {PostresComponent} from "./postres/postres.component";
 import {SuperavitComponent} from "./superavit/superavit.component";
 import {DeficitComponent} from "./deficit/deficit.component";
-import {CreadorComponent} from "../creador/creador.component";
-import {ExploradorComponent} from "../explorador/explorador.component";
 import {CardBodyComponent} from "./card-body/card-body.component";
 
 const routes: Routes = [

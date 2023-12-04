@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {environments} from "../../environments/environments";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpEvent, HttpHeaders} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -19,12 +20,19 @@ export class CreadorService {
     return this.http.get<any>(`${this.url}/creador/cantidadRecetas`, { headers });
   }
 
-  // modificarPerfil(base64Image: string){
-  //   const token = localStorage.getItem('token');
-  //   const headers = new HttpHeaders({
-  //     'Authorization': `Bearer ${token}`
-  //   });
-  //
-  //   return this.http.patch<any>(`${this.url}/creador/perfil`, { fotoPerfil: base64Image }, { headers });
-  // }
+  modificarPerfil(file: File): Observable<HttpEvent<any>> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+
+    return this.http.patch<any>(`${this.url}/creador/perfil`, { headers });
+  }
+
+  getFiles(): Observable<any> {
+    return this.http.get(`${this.url}/files`);
+  }
 }

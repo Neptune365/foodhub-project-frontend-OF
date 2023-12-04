@@ -9,6 +9,10 @@
   display: flex;
 }
 
+.preview {
+  max-width: 200px;
+}
+
 .card {
   background-color: #fff;
   padding: 20px;

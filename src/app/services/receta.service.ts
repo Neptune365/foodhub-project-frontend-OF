@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {environments} from "../../environments/environments";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {RecetaDTO} from "../models/RecetaDTO";
 import {RecetaCategoriaDTO} from "../models/RecetaCategoriaDTO";
+import {RecetaDTO} from "../models/RecetaDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +27,8 @@ export class RecetaService {
     return this.http.get<RecetaCategoriaDTO[]>(`${this.url}/explorar/recetas?categoria=${categoria}`);
   }
 
-  verReceta(){}
+  // FALTA IMPLEMENTAR CORRECTAMENTE
+  // verReceta(idReceta: number): Observable<Receta> {
+  //   return this.http.get<Receta>(`${this.url}/explorar/${idReceta}`)
+  // }
 }

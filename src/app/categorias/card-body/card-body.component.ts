@@ -11,8 +11,4 @@ export class CardBodyComponent {
     window.history.back();
   }
 
-  nombre: String="soy el nombre";
-  descipciom: String="soy la descipcion";
-  img: String="soy la imange";
-
 }

@@ -9,7 +9,7 @@
     <div class="column-right">
 
       <!-- CARD 1 -->
-      <div *ngFor="let recipe of recipes" class="card">
+      <div *ngFor="let recipe of recipes | paginate: { itemsPerPage: 6, currentPage: page }" class="card" routerLink="/cardBody" >
         <img [src]="recipe.imagenReceta" alt="Imagen de la tarjeta">
         <div class="card-content">
           <h3>{{ recipe.titulo }}</h3>

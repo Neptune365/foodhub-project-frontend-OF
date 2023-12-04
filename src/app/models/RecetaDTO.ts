@@ -1,12 +1,10 @@
 import {Categoria} from "./categoria";
 
 export interface IngredienteDTO {
-  // idIngrediente: number;
   ingrediente: string;
 }
 
 export interface InstruccionDTO {
-  // idInstruccion: number;
   instruccion: string;
 }
 
