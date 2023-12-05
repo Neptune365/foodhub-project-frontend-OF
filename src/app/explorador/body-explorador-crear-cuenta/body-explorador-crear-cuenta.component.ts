@@ -19,10 +19,14 @@ export class BodyExploradorCrearCuentaComponent {
     codigoColegiatura: ''
   };
 
+  errorRegistro: boolean = false;
+  cargando: boolean = false;
+
   constructor(private authService: AuthService, private router: Router) {
   }
 
   registrarCreador(): void {
+    this.cargando = true;
     this.authService.registrarCreador(this.creadorDTO).subscribe((response) => {
       console.log('Respuesta del servidor:', response);
 
@@ -30,9 +34,12 @@ export class BodyExploradorCrearCuentaComponent {
       if (exito) {
         this.mostrarModalCuentaCreada = true;
       }
+      this.cargando = false;
 
     }, error => {
       console.error('Error al registrar:', error);
+      this.errorRegistro = true;
+      this.cargando = false;
     });
   }
 

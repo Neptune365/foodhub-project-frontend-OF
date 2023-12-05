@@ -16,6 +16,8 @@ export class BodyExploradorIniciarSesionComponent implements OnInit{
     contrasenia: ''
   };
 
+  errorRegistro: boolean = false;
+
   constructor(private authService: AuthService, private router:Router, private sharedService:SharedService) {}
 
   ngOnInit() {
@@ -32,6 +34,7 @@ export class BodyExploradorIniciarSesionComponent implements OnInit{
       this.router.navigate(['/ingresar']);
     }, error => {
       console.error('Error al iniciar sesión:', error);
+      this.errorRegistro = true;
     });
   }
 }

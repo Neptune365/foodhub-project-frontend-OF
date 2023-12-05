@@ -6,15 +6,17 @@
       <p>Ingresa tus datos registrados</p>
 
       <form>
-        <label for="identificador">Correo Electrónico o Código de Colegiado: *</label>
+        <label for="identificador" [class.error]="errorRegistro">Correo Electrónico o Código de Colegiado: *</label>
         <input type="text" placeholder="abc@example.com/012345" id="identificador" name="identificador" required [(ngModel)]="authDTO.identificador">
 
-        <label for="contrasenia">Contraseña: *</label>
+        <label for="contrasenia" [class.error]="errorRegistro">Contraseña: *</label>
         <input type="password" placeholder="*********" id="contrasenia" name="contrasenia" required [(ngModel)]="authDTO.contrasenia">
 
         <button (click)="iniciarSesion()" type="submit">Ingresar</button>
 
         <p class="obligatorio-texto">* Todos los campos son obligatorios y deben ser llenados.</p>
+        <p *ngIf="errorRegistro" class="error-message">Error al ingresar. Por favor, revisa los datos. <br> Verifica que hayas activado tu cuenta </p>
+
 
         <div class="separador"></div>
 
