@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'postres', component: CategoriasComponent, children: [{path:"", component: PostresComponent}]},
   { path: 'superavit', component: CategoriasComponent, children: [{path:"", component: SuperavitComponent}]},
   { path: 'deficit', component: CategoriasComponent, children: [{path:"", component: DeficitComponent}]},
-  { path: 'cardBody', component: CategoriasComponent, children: [{path:"", component: CardBodyComponent}]},
+  { path: 'cardBody', component: CategoriasComponent, children: [{path:":id", component: CardBodyComponent}]},
 
 ];
 

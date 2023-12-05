@@ -9,6 +9,7 @@ export interface InstruccionDTO {
 }
 
 export interface RecetaDTO {
+  id?:number;
   titulo: string;
   descripcion: string;
   tiempoCoccion: number;

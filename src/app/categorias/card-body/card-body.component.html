@@ -13,9 +13,9 @@
       <div class="card-content">
         <div class="column-left">
           <img src="./assets/images/receta1.jpg" alt="Tostones de Palta y Huevo">
-          <h2>Tostones de Palta y Huevo</h2>
+          <h2>{{ recetaDTO?.titulo }}</h2>
           <div class="descripcion">
-            <p>Aprende a preparar este rico desayuno con tres simples ingredientes. Con estos sencillos pasos podrás disfrutar de este rico y nutritivo platillo</p>
+            <p>{{ recetaDTO?.descripcion }}</p>
           </div>
 
           <ul>
@@ -23,7 +23,7 @@
               <div class="porciones-container">
                 <p class="subtitle">Tiempo de preparación:</p>
                 <div class="cantidad-unidad-container">
-                  <p class="cantidad">X</p>
+                  <p class="cantidad">{{ recetaDTO?.tiempoCoccion }}</p>
                   <p class="unidad">minutos</p>
                 </div>
               </div>
@@ -31,7 +31,7 @@
               <div class="porciones-container">
                 <p class="subtitle">Porciones:</p>
                 <div class="cantidad-unidad-container">
-                  <p class="cantidad">X</p>
+                  <p class="cantidad">{{ recetaDTO?.porciones }}</p>
                   <p class="unidad">porciones</p>
                 </div>
               </div>
@@ -39,7 +39,7 @@
               <div class="porciones-container">
                 <p class="subtitle">Cantidad de calorías:</p>
                 <div class="cantidad-unidad-container">
-                  <p class="cantidad">X</p>
+                  <p class="cantidad">{{ recetaDTO?.calorias }}</p>
                   <p class="unidad">kcal</p>
                 </div>
               </div>
@@ -60,11 +60,7 @@
           <h3>Ingredientes</h3>
           <div class="ingredientes">
             <ul>
-              <li>Ingrediente 1</li>
-              <li>Ingrediente 2</li>
-              <li>Ingrediente 3</li>
-              <li>Ingrediente 4</li>
-              <li>Ingrediente 5</li>
+              <li *ngFor="let ingrediente of recetaDTO?.ingredientes">{{ ingrediente.ingrediente }}</li>
             </ul>
           </div>
 
@@ -73,16 +69,10 @@
           <div class="pasos">
             <ol>
               <div>
-                <p class="title-paso">Paso 1:</p>
-                <p class="paso-content">Aquí va la descripción del primer paso Aquí va la descripción del primer paso Aquí va la descripción del primer paso Aquí va la descripción del primer paso Aquí va la descripción del primer paso Aquí va la descripción del primer paso Aquí va la descripción del primer paso.</p>
-              </div>
-              <div>
-                <p class="title-paso">Paso 2:</p>
-                <p class="paso-content">Aquí va la descripción del segundo paso.</p>
-              </div>
-              <div>
-                <p class="title-paso">Paso 3:</p>
-                <p class="paso-content">Aquí va la descripción del tercer paso.</p>
+                <li *ngFor="let instruccion of recetaDTO?.instrucciones; let i = index">
+                  <p class="title-paso">Paso Nº{{ i + 1 }}:</p>
+                  <p class="paso-content">{{ instruccion.instruccion }}</p>
+                </li>
               </div>
             </ol>
           </div>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {RecetaCategoriaDTO} from "../../models/RecetaCategoriaDTO";
 import {Router} from "@angular/router";
 import {RecetaService} from "../../services/receta.service";
+import {SharedService} from "../../services/shared.service";
 
 @Component({
   selector: 'app-superavit',
@@ -12,7 +13,7 @@ export class SuperavitComponent {
   public page!: number;
   public recipes: RecetaCategoriaDTO[] = [];
 
-  constructor(private router: Router, private recetService: RecetaService) {
+  constructor(private router: Router, private recetService: RecetaService, private sharedService: SharedService) {
   }
 
   ngOnInit() {
@@ -26,6 +27,12 @@ export class SuperavitComponent {
         console.error('Error al obtener recetas por categoría:', error);
       }
     )
+  }
+
+  verContenido(recipe:RecetaCategoriaDTO) {
+    this.sharedService.setrecetaAlmacenada(recipe.id);
+    this.router.navigate(['/cardBody/' + recipe.id])
+    console.log(recipe.id);
   }
 
   // recipes = [

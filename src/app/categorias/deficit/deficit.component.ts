@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RecetaCategoriaDTO} from "../../models/RecetaCategoriaDTO";
 import {Router} from "@angular/router";
 import {RecetaService} from "../../services/receta.service";
+import {SharedService} from "../../services/shared.service";
 
 @Component({
   selector: 'app-deficit',
@@ -12,7 +13,11 @@ export class DeficitComponent implements OnInit{
   public page!: number;
   public recipes: RecetaCategoriaDTO[] = [];
 
-  constructor(private router: Router, private recetService: RecetaService) {
+  constructor(private router: Router, private recetService: RecetaService, private sharedService: SharedService) {
+  }
+
+  ngOnInit() {
+    this.obtenerRecetasPorCategoria('DEFICIT');
   }
 
   obtenerRecetasPorCategoria(categoria: string) {
@@ -24,9 +29,12 @@ export class DeficitComponent implements OnInit{
     )
   }
 
-  ngOnInit() {
-    this.obtenerRecetasPorCategoria('DEFICIT');
+  verContenido(recipe:RecetaCategoriaDTO) {
+    this.sharedService.setrecetaAlmacenada(recipe.id);
+    this.router.navigate(['/cardBody/' + recipe.id])
+    console.log(recipe.id);
   }
+
 
   // recipes = [
   //   {

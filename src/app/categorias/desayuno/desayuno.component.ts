@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {RecetaCategoriaDTO} from "../../models/RecetaCategoriaDTO";
 import {Router} from "@angular/router";
 import {RecetaService} from "../../services/receta.service";
+import {SharedService} from "../../services/shared.service";
 
 @Component({
   selector: 'app-desayuno',
@@ -12,7 +13,7 @@ export class DesayunoComponent {
   public page!: number;
   public recipes: RecetaCategoriaDTO[] = [];
 
-  constructor(private router: Router, private recetService: RecetaService) {
+  constructor(private router: Router, private recetaService: RecetaService, private sharedService: SharedService) {
   }
 
   ngOnInit() {
@@ -20,12 +21,18 @@ export class DesayunoComponent {
   }
 
   obtenerRecetasPorCategoria(categoria: string) {
-    this.recetService.mostrarRecetasPorCategoria(categoria).subscribe((recetas: RecetaCategoriaDTO[]) => {
+    this.recetaService.mostrarRecetasPorCategoria(categoria).subscribe((recetas: RecetaCategoriaDTO[]) => {
         this.recipes = recetas;
       }, (error) => {
         console.error('Error al obtener recetas por categoría:', error);
       }
     )
+  }
+
+  verContenido(recipe:RecetaCategoriaDTO) {
+    this.sharedService.setrecetaAlmacenada(recipe.id);
+    this.router.navigate(['/cardBody/' + recipe.id])
+    console.log(recipe.id);
   }
 
 

@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import {environments} from "../../environments/environments";
-import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
+import {HttpClient, HttpHeaders } from "@angular/common/http";
 import {Observable} from "rxjs";
 import {FotoPerfilDTO} from "../models/FotoPerfilDTO";
-import {PerfilCreadorDTO} from "../models/PerfilCreadorDTO";
-import {CreadorDTO} from "../models/CreadorDTO";
 
 @Injectable({
   providedIn: 'root'

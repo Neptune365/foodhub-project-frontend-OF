@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class SharedService {
 
   private tipo: string ="";
+  private recetaAlmacenada: number = 0;
   constructor() { }
 
   setTipo(tipo: string): void {
@@ -15,5 +16,14 @@ export class SharedService {
   getTipo(): string {
     return this.tipo;
   }
+
+  getrecetaAlmacenada(): number {
+    return this.recetaAlmacenada;
+  }
+
+  setrecetaAlmacenada(value: number) {
+    this.recetaAlmacenada = value;
+  }
+
 
 }

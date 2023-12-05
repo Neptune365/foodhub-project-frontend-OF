@@ -28,7 +28,7 @@ export class RecetaService {
   }
 
   // FALTA IMPLEMENTAR CORRECTAMENTE
-  // verReceta(idReceta: number): Observable<Receta> {
-  //   return this.http.get<Receta>(`${this.url}/explorar/${idReceta}`)
-  // }
+  verReceta(idReceta: number): Observable<RecetaDTO> {
+    return this.http.get<RecetaDTO>(`${this.url}/explorar/${idReceta}`);
+  }
 }

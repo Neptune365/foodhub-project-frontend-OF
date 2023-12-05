@@ -39,7 +39,6 @@ export class BodyCreadorCrearRecetaComponent {
 
     this.recetaService.crearReceta(nuevaReceta).subscribe((response:any) => {
         console.log(response)
-
         this.mostrarModalPublicado = true;
 
         // Lógica de validación de campos y creación de cuenta
