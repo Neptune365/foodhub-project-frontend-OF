@@ -277,3 +277,8 @@ textarea {
   align-items: center;
   margin-bottom: 10px;
 }
+
+.error-message {
+  text-align: justify;
+  color: red;
+}

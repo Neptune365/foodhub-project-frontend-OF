@@ -29,6 +29,8 @@ export class BodyCreadorCrearRecetaComponent {
     this.categoria = Categoria.NINGUNO; // O cualquier valor por defecto que prefieras
   }
 
+  errorRegistro: boolean = false;
+
   validarCamposYPublicar() {
     const nuevaReceta: RecetaDTO = {
       titulo: this.titulo,
@@ -48,10 +50,12 @@ export class BodyCreadorCrearRecetaComponent {
         const exito = this.validarYCrearCuenta(); // Lógica de validación de campos y creación de cuenta
         if (exito) {
           this.mostrarModalPublicado = true;
+          this.errorRegistro = false;
         }
       },
       (error) => {
         console.error('Error al crear la receta:', error);
+        this.errorRegistro = true;
       }
     );
 
