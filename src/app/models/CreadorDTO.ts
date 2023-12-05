@@ -4,5 +4,5 @@ export interface CreadorDTO {
   apellidoMaterno: string,
   correoElectronico: string,
   contrasenia: string,
-  codigoColegiatura: string;
+  codigoColegiatura: string
 }

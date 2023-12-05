@@ -27,7 +27,6 @@ export class RecetaService {
     return this.http.get<RecetaCategoriaDTO[]>(`${this.url}/explorar/recetas?categoria=${categoria}`);
   }
 
-  // FALTA IMPLEMENTAR CORRECTAMENTE
   verReceta(idReceta: number): Observable<RecetaDTO> {
     return this.http.get<RecetaDTO>(`${this.url}/explorar/${idReceta}`);
   }

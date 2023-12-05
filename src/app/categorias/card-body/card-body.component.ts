@@ -3,6 +3,7 @@ import {RecetaService} from "../../services/receta.service";
 import {RecetaDTO} from "../../models/RecetaDTO";
 import {ActivatedRoute} from "@angular/router";
 import {SharedService} from "../../services/shared.service";
+import {CreadorDTO} from "../../models/CreadorDTO";
 
 @Component({
   selector: 'app-card-body',

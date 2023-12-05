@@ -11,10 +11,7 @@
             <img [src]="preview" class="preview" alt="Foto de perfil" id="profileImage">
           </div>
           <p>Creador</p>
-          <button class="change-photo-button" [disabled]="!selectedFiles" (click)="upload()">
-            <label for="fileInput">Cambiar Foto</label>
-          </button>
-          <input type="file" id="fileInput" accept="image/*" style="display: none;" (change)="selectFile($event)">
+          <input type="file" id="fileInput" accept="image/*" style="display: none;">
         </div>
 
         <div class="column-right">
