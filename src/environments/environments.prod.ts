@@ -1,3 +1,3 @@
 export const environments = {
-  baseUrl: 'https://link.desplegado.macuebo',
+  baseUrl: 'https://foodhub-backend-4thr.onrender.com',
 }
