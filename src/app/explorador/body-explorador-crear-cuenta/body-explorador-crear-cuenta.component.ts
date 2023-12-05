@@ -26,12 +26,13 @@ export class BodyExploradorCrearCuentaComponent {
     this.authService.registrarCreador(this.creadorDTO).subscribe((response) => {
       console.log('Respuesta del servidor:', response);
 
-    }, error => {
-      console.error('Error al registrar:', error);
       const exito = this.validarYCrearCuenta();
       if (exito) {
         this.mostrarModalCuentaCreada = true;
       }
+
+    }, error => {
+      console.error('Error al registrar:', error);
     });
   }
 

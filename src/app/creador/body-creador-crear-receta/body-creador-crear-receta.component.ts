@@ -39,9 +39,7 @@ export class BodyCreadorCrearRecetaComponent {
 
     this.recetaService.crearReceta(nuevaReceta).subscribe((response:any) => {
         console.log(response)
-      },
-      (error) => {
-        console.error('Error al crear la receta:', error);
+
         this.mostrarModalPublicado = true;
 
         // Lógica de validación de campos y creación de cuenta
@@ -50,6 +48,9 @@ export class BodyCreadorCrearRecetaComponent {
         if (exito) {
           this.mostrarModalPublicado = true;
         }
+      },
+      (error) => {
+        console.error('Error al crear la receta:', error);
       }
     );
 
