@@ -3,7 +3,7 @@
     <div class="column">
       <h3>Escribe la información de tu Receta:</h3>
       <h4>Sube una foto de tu receta y completa los campos</h4>
-      <input class="input-image" type="file" accept="image/*" required>
+      <input class="input-image" type="file" accept="image/*" required (change)="onFileSelected($event)">
       <div class="form-text">
         * Formato: JPEG, PNG
       </div>
@@ -65,7 +65,7 @@
   </form>
 
   <div class="button-container">
-    <button  (click)="validarCamposYPublicar()"  type="button" class="orange-button" onclick="publishRecipe()">Publicar</button>
+    <button  (click)="validarCamposYPublicar()"  (click)="convertToBase64()"  type="button" class="orange-button">Publicar</button>
     <p class="small-text">* Los campos obligatorios deben ser completados</p>
   </div>
 
