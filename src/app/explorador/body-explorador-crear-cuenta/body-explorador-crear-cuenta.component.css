@@ -69,5 +69,7 @@ button {
 .error-message {
   text-align: left;
   color: red;
+  max-width: 300px;
+  word-wrap: break-word;
 }
 

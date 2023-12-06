@@ -8,8 +8,8 @@
       <p>Un creado es un nutricionista, para crear una cuenta <br> debes validar tu código de colegiado.</p>
 
       <form (ngSubmit)="registrarCreador()">
-        <label for="nombre" [class.error]="errorRegistro">Nombre: *</label>
-        <input type="text" placeholder="Ingrese Nombre *" id="nombre" required name="nombre" [(ngModel)]="creadorDTO.nombre">
+        <label for="nombre" [class.error]="errorNombre">Nombres: *</label>
+        <input type="text" placeholder="Ingrese sus Nombres *" id="nombre" required name="nombre" [(ngModel)]="creadorDTO.nombre">
 
         <label for="apellidoPaterno" [class.error]="errorRegistro">Apellido Paterno: *</label>
         <input type="text" placeholder="Ingrese Apellido Paterno *" id="apellidoPaterno" required name="apellidoPaterno" [(ngModel)]="creadorDTO.apellidoPaterno">
@@ -17,14 +17,14 @@
         <label for="apellidoMaterno" [class.error]="errorRegistro">Apellido Materno: *</label>
         <input type="text" placeholder="Ingrese Apellido Materno *" id="apellidoMaterno" required name="apellidoMaterno" [(ngModel)]="creadorDTO.apellidoMaterno">
 
-        <label for="correoElectronico" [class.error]="errorRegistro">Correo Electrónico: *</label>
+        <label for="correoElectronico" [class.error]="errorCorreo">Correo Electrónico: *</label>
         <input type="email" placeholder="Ingrese Correo Electrónico *" id="correoElectronico" required name="correoElectronico" [(ngModel)]="creadorDTO.correoElectronico">
 
-        <label for="contrasenia" [class.error]="errorRegistro">Contraseña: *</label>
+        <label for="contrasenia" [class.error]="errorRegistro || errorContrasenia">Contraseña: *</label>
         <input type="password" placeholder="********" id="contrasenia" required name="contrasenia" [(ngModel)]="creadorDTO.contrasenia">
 
-        <label for="codigoColegiatura" [class.error]="errorRegistro">Código de Colegiado: *</label>
-        <input type="number" placeholder="012345" maxlength="10" id="codigoColegiatura" required name="codigoColegiatura" [(ngModel)]="creadorDTO.codigoColegiatura">
+        <label for="codigoColegiatura" [class.error]="errorCodigoColegiatura">Código de Colegiado: *</label>
+        <input type="text" placeholder="012345" maxlength="6" id="codigoColegiatura" required name="codigoColegiatura" [(ngModel)]="creadorDTO.codigoColegiatura">
 
         <button type="submit" [disabled]="cargando">
           <span *ngIf="!cargando">Crear cuenta</span>
@@ -32,7 +32,7 @@
         </button>
 
         <p class="obligatorio-texto">* Todos los campos son obligatorios y deben ser llenados.</p>
-        <p *ngIf="errorRegistro" class="error-message">Error al registrar. Por favor, revisa los campos. <br> La contraseña debe tener mínimo 8 caractéres <br> El código debe tener solo 6 números para ser válido</p>
+        <p *ngIf="errorRegistro" class="error-message">{{ mensajeError }}</p>
       </form>
 
     </div>

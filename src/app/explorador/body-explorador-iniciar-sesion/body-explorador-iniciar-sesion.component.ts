@@ -17,6 +17,9 @@ export class BodyExploradorIniciarSesionComponent implements OnInit{
   };
 
   errorRegistro: boolean = false;
+  errorIdentificador: boolean = false;
+  errorContrasenia: boolean = false;
+  mensajeError: string = '';
 
   constructor(private authService: AuthService, private router:Router, private sharedService:SharedService) {}
 
@@ -27,6 +30,17 @@ export class BodyExploradorIniciarSesionComponent implements OnInit{
 
   iniciarSesion(): void {
 
+    this.resetErrores();
+
+    if (!this.authDTO.identificador || !this.authDTO.contrasenia) {
+      this.errorRegistro = true;
+      this.mensajeError = 'Complete todos los campos obligatorios.';
+      return;
+    }
+
+
+
+
     this.authService.iniciarSesion(this.authDTO).subscribe((response:any) => {
       this.tipo="creador"
       this.sharedService.setTipo(this.tipo);
@@ -35,6 +49,17 @@ export class BodyExploradorIniciarSesionComponent implements OnInit{
     }, error => {
       console.error('Error al iniciar sesión:', error);
       this.errorRegistro = true;
+      this.mensajeError = 'Error al iniciar sesión. Inténtalo de nuevo';
+
     });
+
   }
+
+  resetErrores(): void {
+    this.errorRegistro = false;
+    this.errorIdentificador = false;
+    this.errorContrasenia = false;
+    this.mensajeError = '';
+  }
+
 }

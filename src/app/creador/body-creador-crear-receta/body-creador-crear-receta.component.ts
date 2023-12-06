@@ -10,6 +10,7 @@ import {IngredienteDTO, InstruccionDTO, RecetaDTO} from "../../models/RecetaDTO"
   styleUrls: ['./body-creador-crear-receta.component.css']
 })
 export class BodyCreadorCrearRecetaComponent {
+
   titulo: string = '';
   descripcion: string = '';
   tiempoCoccion: number = 0;
@@ -30,8 +31,31 @@ export class BodyCreadorCrearRecetaComponent {
   }
 
   errorRegistro: boolean = false;
+  cargando: boolean = false;
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0] as File;
+    this.convertToBase64();
+  }
+  convertToBase64() {
+    if (this.selectedFile) {
+      const reader = new FileReader();
+      reader.readAsDataURL(this.selectedFile);
+      reader.onload = () => {
+        this.imagen = reader.result as string;
+        this.validarCamposYPublicar(); // Llamar a la función después de obtener la imagen en Base64
+      };
+      reader.onerror = (error) => {
+        console.log('Error: ', error);
+      };
+    }
+  }
 
   validarCamposYPublicar() {
+
+    this.cargando = true;
+    this.resetErrores();
+
     const nuevaReceta: RecetaDTO = {
       titulo: this.titulo,
       descripcion: this.descripcion,
@@ -44,6 +68,20 @@ export class BodyCreadorCrearRecetaComponent {
       imagen: this.imagen,
     };
 
+    // Verificar si algún ingrediente está vacío
+    if (this.ingredientes.some(ingrediente => !ingrediente.ingrediente)) {
+      this.errorRegistro = true;
+      this.cargando = false;
+      return;
+    }
+
+    // Verificar si algún paso está vacío
+    if (this.instrucciones.some(instruccion => !instruccion.instruccion)) {
+      this.errorRegistro = true;
+      this.cargando = false;
+      return;
+    }
+
     this.recetaService.crearReceta(nuevaReceta).subscribe((response:any) => {
         console.log(response)
         this.mostrarModalPublicado = true;
@@ -52,10 +90,12 @@ export class BodyCreadorCrearRecetaComponent {
           this.mostrarModalPublicado = true;
           this.errorRegistro = false;
         }
+        this.cargando = false;
       },
       (error) => {
         console.error('Error al crear la receta:', error);
         this.errorRegistro = true;
+        this.cargando = false;
       }
     );
 
@@ -91,22 +131,12 @@ export class BodyCreadorCrearRecetaComponent {
     return true; // Lógica de validación y creación de cuenta
   }
 
-  onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0] as File;
+  resetErrores(): void {
+    this.errorRegistro = false;
   }
 
-  convertToBase64() {
-    if (this.selectedFile) {
-      const reader = new FileReader();
-      reader.readAsDataURL(this.selectedFile);
-      reader.onload = () => {
-        this.imagen = reader.result as string;
-        this.validarCamposYPublicar(); // Llamar a la función después de obtener la imagen en Base64
-      };
-      reader.onerror = (error) => {
-        console.log('Error: ', error);
-      };
-    }
-  }
+
+
+
 
 }
